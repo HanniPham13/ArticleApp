@@ -4,12 +4,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.collections.emptyList
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ArticleListFragment : Fragment(R.layout.fragment_article_list) {
 
+    private val viewModel: ArticleViewModel by viewModels()
     private lateinit var recycler: RecyclerView
     private lateinit var emptyState: View
     private lateinit var errorState: View
@@ -21,24 +28,26 @@ class ArticleListFragment : Fragment(R.layout.fragment_article_list) {
         errorState = view.findViewById(R.id.errorState)
         recycler.layoutManager = LinearLayoutManager(requireContext())
 
-        loadArticles()
-    }
-
-    override fun onResume(){
-        super.onResume()
-        loadArticles()
-    }
-
-    private fun loadArticles() {
-        val articles = (activity as? MainActivity)?.getArticles() ?: emptyList()
-        recycler.adapter = ArticleAdapter(articles) { article ->
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, ArticleDetailFragment.newInstance(article))
-                .addToBackStack(null)
-                .commit()
+        // Observe ViewModel articles Flow
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.articles.collect { articles ->
+                    recycler.adapter = ArticleAdapter(articles) { article ->
+                        parentFragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainer, ArticleDetailFragment.newInstance(article))
+                            .addToBackStack(null)
+                            .commit()
+                    }
+                    recycler.isVisible = articles.isNotEmpty()
+                    emptyState.isVisible = articles.isEmpty()
+                    errorState.isVisible = false
+                }
+            }
         }
-        recycler.isVisible = articles.isNotEmpty()
-        emptyState.isVisible = articles.isEmpty()
-        errorState.isVisible = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadArticles()
     }
 }
