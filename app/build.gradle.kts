@@ -6,11 +6,14 @@ android {
     namespace = "com.ziaplex.articleapp"
     compileSdk {
         version = release(37)
+        buildFeatures {
+            viewBinding = true
+        }
     }
 
     defaultConfig {
         applicationId = "com.ziaplex.articleapp"
-        minSdk = 24
+        minSdk = 25
         //noinspection OldTargetApi
         targetSdk = 35
         versionCode = 1
