@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="brand_primary">#3F51B5</color>
+    <color name="brand_primary_dark">#283593</color>
+    <color name="page_bg">#F9F9FB</color> <!-- same names as the boilerplate -->
+    <color name="surface_bg">#FFFFFFFF</color>
+    <color name="outline_soft">#E7E7EE</color>
+    <color name="on_surface">#0F0F12</color>
+    <color name="on_surface_variant">#7A7A89</color>
+    <color name="error">#D32F2F</color>
 </resources>
