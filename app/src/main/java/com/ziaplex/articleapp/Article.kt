@@ -6,5 +6,7 @@ data class Article(
     val title: String,
     val author: String,
     val date: String,
-    val body: String
+    val body: String,
+    val createdAt: Long = System.currentTimeMillis(),
+    val updatedAt: Long = System.currentTimeMillis()
 )

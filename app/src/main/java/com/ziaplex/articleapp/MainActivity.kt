@@ -9,11 +9,16 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val articles = mutableListOf<Article>()
+    companion object {
 
+
+        private val articles = mutableListOf<Article>()
+    }
     private fun showDetail(article: Article) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, ArticleDetailFragment.newInstance(article))
@@ -44,8 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.addOnBackStackChangedListener {
             val showFragment = supportFragmentManager.backStackEntryCount > 0
-            findViewById<View>(R.id.fragmentContainer).isVisible = showFragment
-
 
             findViewById<View>(R.id.fabAddArticle).isVisible = !showFragment
 

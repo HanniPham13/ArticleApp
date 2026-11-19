@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class ArticleFormFragment : Fragment(R.layout.fragment_article_form) {
 
+    private val viewModel: ArticleViewModel by activityViewModels()
     private var articleId: Long = -1
     private var category: String = "Technology"
     private var date: String = ""
@@ -41,7 +45,6 @@ class ArticleFormFragment : Fragment(R.layout.fragment_article_form) {
             val title = titleEditText.text.toString().trim()
             val author = authorEditText.text.toString().trim()
             val body = bodyEditText.text.toString().trim()
-
 
             if (title.isEmpty()) {
                 titleInputLayout.error = getString(R.string.error_title_required)
@@ -74,7 +77,7 @@ class ArticleFormFragment : Fragment(R.layout.fragment_article_form) {
                 body = body
             )
 
-            (activity as? MainActivity)?.saveArticle(updatedArticle)
+            viewModel.saveArticle(updatedArticle)
             parentFragmentManager.popBackStack()
         }
     }
