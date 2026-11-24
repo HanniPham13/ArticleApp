@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Article App</string>
+
+
+    <string name="article_form_title_new">New article</string>
+    <string name="article_form_title_edit">Edit article</string>
+    <string name="article_hint_title">Title</string>
+    <string name="article_hint_author">Author</string>
+    <string name="article_hint_category">Category</string>
+    <string name="article_hint_body">Write your article…</string>
+    <string name="action_save_btn">Save</string>
+    <string name="action_edit_btn">Edit</string>
+    <string name="action_delete_btn">Delete</string>
+    <string name="action_cancel_btn">Cancel</string>
+
+    <string name="empty_title_msg">No articles yet</string>
+    <string name="empty_message_msg">Articles you create will show up here.</string>
+    <string name="empty_action_msg">Add article</string>
+
+    <string name="error_message">Something went wrong. Please try again.</string>
+    <string name="retry_msg">Retry</string>
+
+    <string name="error_title_required">Title is required</string>
+    <string name="error_author_required">Author is required</string>
+    <string name="error_body_required">Body is required</string>
+
+    <string name="article_byline">An Article By: %1$s · %2$s</string>
 </resources>
