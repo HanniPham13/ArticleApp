@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorSurface"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/dimen_16"
+    android:padding="@dimen/dimen_16">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipCategory"
+        style="@style/Widget.Material3.Chip.Assist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Technology" />
+
+
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_12"
+        android:textSize="@dimen/font_22"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipCategory"
+        tools:text="Article title goes here and may wrap onto multiple lines" />
+
+    <TextView
+        android:id="@+id/textByline"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_4"
+        android:textColor="@color/on_surface_variant"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        tools:text="Jane Doe · Nov 17, 2026" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollBody"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_0"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginBottom="@dimen/dimen_16"
+        android:fillViewport="true"
+        android:paddingTop="@dimen/dimen_16"
+        android:clipToPadding="false"
+        style="@style/Widget.Material3.Button.TonalButton"
+        app:layout_constraintBottom_toTopOf="@id/buttonEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textByline">
+
+        <TextView
+            android:id="@+id/textBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:textSize="16sp"
+            tools:text="Article body text goes here." />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonEdit"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_8"
+        android:minHeight="@dimen/dimen_48"
+        android:text="@string/action_edit_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonDelete"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonDelete"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:minHeight="@dimen/dimen_48"
+        android:text="@string/action_delete_btn"
+        app:backgroundTint="?attr/colorError"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonEdit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

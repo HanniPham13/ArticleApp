@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_16"
+    android:layout_marginVertical="@dimen/dimen_8"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="@dimen/card_radius"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorOutlineVariant">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_16">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCategory"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+            app:chipStrokeWidth="@dimen/dimen_0"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+            tools:text="Technology" />
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Article title that is long enough to wrap onto a second line and get truncated" />
+
+        <TextView
+            android:id="@+id/textByline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:textColor="@color/on_surface_variant"
+            android:textSize="14sp"
+            tools:text="Jane Doe · Nov 17, 2026" />
+
+        <TextView
+            android:id="@+id/textBodyPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textSize="14sp"
+            tools:text="A short preview of the article body that runs long enough to be cut off after two lines." />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
